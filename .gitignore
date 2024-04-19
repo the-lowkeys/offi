@@ -1,0 +1,6 @@
+# Uneeded Directories
+Lib/
+Scripts/
+
+# Uneeded Files
+pyvenv.cfg
