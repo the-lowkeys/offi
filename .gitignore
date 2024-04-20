@@ -1,6 +1,6 @@
-# Uneeded Directories
-Lib/
-Scripts/
+# Environment-Specific Directories
+.vs/
+.vscode/
 
-# Uneeded Files
-pyvenv.cfg
+# Ignored Directories
+Build/
