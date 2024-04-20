@@ -1,6 +1,7 @@
 # Environment-Specific Directories
 .vs/
 .vscode/
+.venv/
 
 # Python Virtual Environment Directories
 Lib/
@@ -9,6 +10,7 @@ pyvenv.cfg
 
 # Ignored Directories
 Build/
+dist/
 
 # Specific Files
 **/__pycache__
