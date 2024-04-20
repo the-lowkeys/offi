@@ -3,13 +3,15 @@
 
 # Packages
 import sys
+import flet as ft
 
 # Project Modules
 from Modules.Core import officore as ofc
 
 # Main Function
-def main():
-    init = ofc.officore(sys.argv[1:])
+def main(offi = ft.Page):
+    init = ofc.offi_core(sys.argv[1:], offi)
+    
+    
 
-if __name__ == '__main__':
-    main()
+ft.app(main)
