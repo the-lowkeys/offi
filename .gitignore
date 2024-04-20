@@ -2,5 +2,10 @@
 .vs/
 .vscode/
 
+# Python Virtual Environment Directories
+Lib/
+Scripts/
+pyvenv.cfg
+
 # Ignored Directories
 Build/
