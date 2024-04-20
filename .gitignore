@@ -9,3 +9,6 @@ pyvenv.cfg
 
 # Ignored Directories
 Build/
+
+# Specific Files
+**/__pycache__
