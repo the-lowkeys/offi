@@ -10,8 +10,6 @@ from Modules.Core import officore as ofc
 
 # Main Function
 def main(offi = ft.Page):
-    init = ofc.offi_core(sys.argv[1:], offi)
-    
-    
+    init = ofc.offi_core(sys.argv[1:])
 
 ft.app(main)
