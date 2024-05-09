@@ -21,3 +21,5 @@ Additionally, Offi requires the `pandas` python module, which you can install vi
 To run Offi, navigate to the root folder of the project and invoke through a terminal the command:
 
 ```python Source/main.py```
+
+## Building from Source
