@@ -22,10 +22,10 @@ def draw(page, debug=False, handlers: tuple=None):
     page.add(txt)
     
     text_username: TextField = TextField(label='Employee ID', text_align=ft.TextAlign.LEFT, width=500)
-    text_password: TextField = TextField(label='Password', text_align=ft.TextAlign.LEFT, width=500, password=True)
+    text_password: TextField = TextField(label='Password', text_align=ft.TextAlign.LEFT, width=500, password=True, can_reveal_password=True)
     button_submit: ElevatedButton = ElevatedButton(text='Login', width=200, height=75, disabled=True)
     
-    def validate(e:ControlEvent) ->None:
+    def validate_username(e:ControlEvent) ->None:
         if text_username.value.isdigit() and len(text_username.value) <= 10:
             if all([text_username.value, text_password.value]):
                 button_submit.disabled = False
@@ -33,17 +33,20 @@ def draw(page, debug=False, handlers: tuple=None):
                 button_submit.disabled = True
         else:
             text_username.value = ''
+            text_username.border_color = 'red'
             print('Invalid input. Please enter up to 10 digits.')
         page.update()
 
+    def validate_password(e: ControlEvent) -> None:
+        pass
 
     def submit(e:ControlEvent) -> None:
         print('Username:', text_username.value)
         print('Password:', text_password.value)
         
 
-    text_username.on_change = validate
-    text_password.on_change = validate
+    text_username.on_change = validate_username
+    text_password.on_change = validate_password
     #button_submit.on_click = submit
     
     page.add(
@@ -58,12 +61,15 @@ def draw(page, debug=False, handlers: tuple=None):
             alignment=ft.MainAxisAlignment.CENTER
         )
     )
+
     page.add(
         Row(
             controls=[button_submit],
             alignment=ft.MainAxisAlignment.CENTER
         )
     )
+    
+
 
 def get_info():
     pass
