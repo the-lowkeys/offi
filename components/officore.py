@@ -3,6 +3,7 @@
 
 # Package Imports
 from functools import partial
+from hashlib import sha256
 import flet as ft
 import sqlite3 as sql3
 
@@ -66,15 +67,18 @@ class core:
             '__VALIDATE': validate.draw
         }
 
+        proc.__HANDLERS = (
+            proc.change_screen
+        )
+
         # Program Process Setup
+        # # Database Initialization
+        proc.dblynk = ofl.lynk()
+
+        # # Process Draw
         proc.__parse_args(args[1:])
         proc.__set_screen('__LOGIN')
-        proc.__handler()
 
-    # Program Handler
-    def __handler(proc):     
-        
-        pass
         
     # Properties and Argument Parser
     def __parse_args(proc, args: list):
@@ -130,7 +134,9 @@ class core:
             return False
 
         # Change Screen
-        proc.__WINDOW.controls.clear()
+        proc.__WINDOW.clean()
         proc.__set_screen(page_str)
         proc.__WINDOW.update()
         return True
+
+    # Database Connectors
