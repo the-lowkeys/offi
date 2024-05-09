@@ -26,19 +26,30 @@ def draw(page, debug=False, handlers: tuple=None):
     button_submit: ElevatedButton = ElevatedButton(text='Login', width=200, height=75, disabled=True)
     
     def validate_username(e:ControlEvent) ->None:
-        if text_username.value.isdigit() and len(text_username.value) <= 10:
+        if text_username.value.isalnum():
             if all([text_username.value, text_password.value]):
                 button_submit.disabled = False
             else:
                 button_submit.disabled = True
+                text_username.border_color = 'default'
         else:
             text_username.value = ''
             text_username.border_color = 'red'
-            print('Invalid input. Please enter up to 10 digits.')
+            print('Invalid input. Please enter valid email')
         page.update()
 
     def validate_password(e: ControlEvent) -> None:
-        pass
+        if len(text_password.value) >= 1:
+            if all([text_username.value, text_password.value]):
+                button_submit.disabled = False
+            else:
+                button_submit.disabled = True
+                text_username.border_color = 'default'
+        else:
+            text_password.value = ''
+            text_password.border_color = 'red'
+            print('Invalid input. Please enter a password.')
+        page.update()
 
     def submit(e:ControlEvent) -> None:
         print('Username:', text_username.value)
