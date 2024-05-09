@@ -4,8 +4,8 @@
 # Package Imports
 from functools import partial
 from hashlib import sha256
+import uuid
 import flet as ft
-import sqlite3 as sql3
 
 # Project Module Import
 from components import offilynk as ofl
@@ -139,4 +139,11 @@ class core:
         proc.__WINDOW.update()
         return True
 
-    # Database Connectors
+    # Database Helpers
+    def hash_key(proc, key: str):
+        # Type Check
+        pass
+    
+    def unique_id(proc, id: str):
+        # Type Check
+        pass

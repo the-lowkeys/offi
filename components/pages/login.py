@@ -21,7 +21,7 @@ def draw(page, debug=False, handlers: tuple=None):
     txt = ft.Text(value="Welcome to OFFI", text_align=ft.TextAlign.CENTER, width=500, size=50)
     page.add(txt)
     
-    text_username: TextField = TextField(label='Employee ID', text_align=ft.TextAlign.LEFT, width=500)
+    text_username: TextField = TextField(label='Email', text_align=ft.TextAlign.LEFT, width=500)
     text_password: TextField = TextField(label='Password', text_align=ft.TextAlign.LEFT, width=500, password=True, can_reveal_password=True)
     button_submit: ElevatedButton = ElevatedButton(text='Login', width=200, height=75, disabled=True)
     
@@ -33,9 +33,7 @@ def draw(page, debug=False, handlers: tuple=None):
                 button_submit.disabled = True
                 text_username.border_color = 'default'
         else:
-            text_username.value = ''
             text_username.border_color = 'red'
-            print('Invalid input. Please enter valid email')
         page.update()
 
     def validate_password(e: ControlEvent) -> None:
@@ -46,19 +44,19 @@ def draw(page, debug=False, handlers: tuple=None):
                 button_submit.disabled = True
                 text_username.border_color = 'default'
         else:
-            text_password.value = ''
             text_password.border_color = 'red'
-            print('Invalid input. Please enter a password.')
         page.update()
-
-    def submit(e:ControlEvent) -> None:
-        print('Username:', text_username.value)
-        print('Password:', text_password.value)
         
+    # Handler for Button Click
+    def key_submit(e: ControlEvent):
+        # Check if Employee Exists, if their passwords are correct, their role, 
+        # Then sends the right screen to them.
+        handlers[0]('__REQUEST')
+        pass
 
     text_username.on_change = validate_username
     text_password.on_change = validate_password
-    #button_submit.on_click = submit
+    button_submit.on_click = key_submit
     
     page.add(
         Row(
@@ -81,7 +79,4 @@ def draw(page, debug=False, handlers: tuple=None):
     )
     
 
-
-def get_info():
-    pass
     

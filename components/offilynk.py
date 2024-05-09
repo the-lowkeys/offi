@@ -1,6 +1,7 @@
 # This file contains
 
 # Package Imports
+from functools import partial
 import sqlite3 as sql3
 
 class lynk:

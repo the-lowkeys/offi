@@ -162,3 +162,7 @@ cython_debug/
 # Python venv config
 pyvenv.cfg
 offi.spec
+
+# Databases
+*.db-journal
+*.db
