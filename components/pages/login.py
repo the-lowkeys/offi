@@ -21,7 +21,7 @@ def draw(page, debug=False, handlers: tuple=None):
     txt = ft.Text(value="Welcome to OFFI", text_align=ft.TextAlign.CENTER, width=500, size=50)
     page.add(txt)
     
-    text_username: TextField = TextField(label='Employee', text_align=ft.TextAlign.LEFT, width=500)
+    text_username: TextField = TextField(label='Employee ID', text_align=ft.TextAlign.LEFT, width=500)
     text_password: TextField = TextField(label='Password', text_align=ft.TextAlign.LEFT, width=500, password=True)
     button_submit: ElevatedButton = ElevatedButton(text='Login', width=200, height=75, disabled=True)
     
@@ -34,7 +34,7 @@ def draw(page, debug=False, handlers: tuple=None):
         else:
             text_username.value = ''
             print('Invalid input. Please enter up to 10 digits.')
-    page.update()
+        page.update()
 
 
     def submit(e:ControlEvent) -> None:
