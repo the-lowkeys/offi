@@ -134,7 +134,7 @@ class core:
             return False
 
         # Change Screen
-        proc.__WINDOW.controls.clear()
+        proc.__WINDOW.clean()
         proc.__set_screen(page_str)
         proc.__WINDOW.update()
         return True

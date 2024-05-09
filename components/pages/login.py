@@ -15,12 +15,8 @@ def draw(page, debug=False, handlers: tuple=None):
         raise TypeError('Argument \'page\' is not an \'flet.Page\' object!')
     
     # Draw Screen
-    page.title = 'OFFI'
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
-    page.theme_mode = ft.ThemeMode.DARK
-    page.window_width = 700
-    page.window_height = 700    
     page.window_resizable = True
     txt = ft.Text(value="Welcome to OFFI", text_align=ft.TextAlign.CENTER, width=500, size=50)
     page.add(txt)
@@ -41,17 +37,10 @@ def draw(page, debug=False, handlers: tuple=None):
         print('Username:', text_username.value)
         print('Password:', text_password.value)
         
-        page.clean()
-        page.add(
-            Row(
-                controls=[Text(value=f'Welcome: {text_username.value}', size=20)],
-                alignment=ft.MainAxisAlignment.CENTER
-            )
-        )
 
     text_username.on_change = validate
     text_password.on_change = validate
-    button_submit.on_click = submit
+    #button_submit.on_click = submit
     
     page.add(
         Row(
