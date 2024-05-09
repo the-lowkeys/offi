@@ -15,12 +15,7 @@ def draw(page, debug=False):
         raise TypeError('Argument \'page\' is not an \'flet.Page\' object!')
     
     # Draw Screen
-    page.title = 'Login'
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
-    page.theme_mode = ft.ThemeMode.DARK
-    page.window_width = 500
-    page.window_height = 500    
-    page.window_resizable = True
     
     text_username: TextField = TextField(label='Username', text_align=ft.TextAlign.LEFT, width=200)
     text_password: TextField = TextField(label='Password', text_align=ft.TextAlign.LEFT, width=200, password=True)

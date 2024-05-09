@@ -28,9 +28,11 @@ class core:
         proc.__WINDOW = page                    # Set as Window
         proc.__WINDOW.window_min_height = 480
         proc.__WINDOW.window_min_width = 800
+        proc.__WINDOW.title('Offi ' + proc.__properties['version'])
         proc.__properties = {
             'debug-mode': False,
-            'disable-login': False
+            'disable-login': False,
+            'version': 'alpha 0.1'
         }
         
         """
