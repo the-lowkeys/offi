@@ -65,9 +65,6 @@ def draw(page, debug=False, handlers: tuple=None):
         )
     )
 
-    
-
-
 def get_info():
     pass
     
