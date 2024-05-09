@@ -12,7 +12,7 @@ def draw(page, debug=False):
         raise TypeError('Argument \'page\' is not an \'flet.Page\' object!')
     
     # Draw Screen
-    page.add(ft.TextButton('Click Me!'))
+    
 
 def get_info():
     pass

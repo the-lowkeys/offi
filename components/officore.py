@@ -25,7 +25,9 @@ class core:
             raise TypeError('Argument \'args\' is not of type \'list\'!')
 
         # Program Properties Setup
-        proc.__WINDOW = page                                # Set as Window
+        proc.__WINDOW = page                    # Set as Window
+        proc.__WINDOW.window_min_height = 480
+        proc.__WINDOW.window_min_width = 800
         proc.__properties = {
             'debug-mode': False,
             'disable-login': False
