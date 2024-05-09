@@ -14,7 +14,6 @@ def draw(page, debug=False, handlers: tuple=None):
     if type(page) != ft.Page:
         raise TypeError('Argument \'page\' is not an \'flet.Page\' object!')
     
-    
     # Draw Screen
     page.title = 'OFFI'
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
@@ -26,18 +25,22 @@ def draw(page, debug=False, handlers: tuple=None):
     txt = ft.Text(value="Welcome to OFFI", text_align=ft.TextAlign.CENTER, width=500, size=50)
     page.add(txt)
     
-    text_username: TextField = TextField(label='Username', text_align=ft.TextAlign.LEFT, width=500)
+    text_username: TextField = TextField(label='Employee', text_align=ft.TextAlign.LEFT, width=500)
     text_password: TextField = TextField(label='Password', text_align=ft.TextAlign.LEFT, width=500, password=True)
     button_submit: ElevatedButton = ElevatedButton(text='Login', width=200, height=75, disabled=True)
     
     def validate(e:ControlEvent) ->None:
-        if all([text_username.value, text_password.value]):
-            button_submit.disabled = False
+        if text_username.value.isdigit() and len(text_username.value) <= 10:
+            if all([text_username.value, text_password.value]):
+                button_submit.disabled = False
+            else:
+                button_submit.disabled = True
         else:
-            button_submit.disabled = True
-            
-        page.update()
-        
+            text_username.value = ''
+            print('Invalid input. Please enter up to 10 digits.')
+    page.update()
+
+
     def submit(e:ControlEvent) -> None:
         print('Username:', text_username.value)
         print('Password:', text_password.value)
