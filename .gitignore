@@ -161,4 +161,4 @@ cython_debug/
 
 # Python venv config
 pyvenv.cfg
-*.spec
+offi.spec
