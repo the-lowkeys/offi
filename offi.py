@@ -11,10 +11,5 @@ from components import officore as ofc
 def main(offi: ft.Page):
     # Initialization Step
     core_process = ofc.core(offi, sys.argv)
-    
-
-    # Test Code
-    
-
 
 ft.app(main)
