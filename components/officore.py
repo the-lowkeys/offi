@@ -28,12 +28,12 @@ class core:
         proc.__WINDOW = page                    # Set as Window
         proc.__WINDOW.window_min_height = 480
         proc.__WINDOW.window_min_width = 800
-        proc.__WINDOW.title('Offi ' + proc.__properties['version'])
         proc.__properties = {
             'debug-mode': False,
             'disable-login': False,
-            'version': 'alpha 0.1'
+            'version': '0.1-alpha'
         }
+        proc.__WINDOW.title = 'OFFI v' + proc.__properties['version']
         
         """
         The dictionary __PROGRAM_ARGS is an implementation of a complex enum
@@ -73,7 +73,8 @@ class core:
 
     # Program Handler
     def __handler(proc):     
-        print(proc.__properties['debug-mode'])
+        
+        pass
         
     # Properties and Argument Parser
     def __parse_args(proc, args: list):
