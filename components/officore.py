@@ -2,9 +2,8 @@
 # offi program. It manages the 
 
 # Package Imports
+import sys
 from functools import partial
-from hashlib import sha256
-import uuid
 import flet as ft
 
 # Project Module Import
@@ -31,8 +30,8 @@ class core:
         proc.__WINDOW.window_min_width = 800
         proc.__properties = {
             'debug-mode': False,
-            'disable-login': False,
-            'version': '0.1-alpha'
+            'version': '0.1-alpha',
+            'db-location': ''
         }
         proc.__WINDOW.title = 'OFFI v' + proc.__properties['version']
         
@@ -53,11 +52,7 @@ class core:
             '--debug': (partial(proc.__set_properties, 'debug-mode'),
                         'debug-mode',
                         None
-                       ),
-            '--skip-login': (partial(proc.__set_properties, 'disable-login'),
-                             'disable-login',
-                             None
-                            )
+                       )
         }
         
         proc.__PAGE_LIST = {
