@@ -626,7 +626,7 @@ insert into Employees (EmployeeID, FirstName, LastName, Email, EmployeeKey, Empl
 insert into Employees (EmployeeID, FirstName, LastName, Email, EmployeeKey, EmployeeRole) values (617, 'Kelcey', 'Boon', 'kboonh4@chicagotribune.com', 'xnybjGHQ11', 'EMPLOYEE');
 insert into Employees (EmployeeID, FirstName, LastName, Email, EmployeeKey, EmployeeRole) values (618, 'Tobe', 'Doughty', 'tdoughtyh5@wisc.edu', 'shtgxJNS77', 'EMPLOYEE');
 insert into Employees (EmployeeID, FirstName, LastName, Email, EmployeeKey, EmployeeRole) values (619, 'Brigit', 'Poulgreen', 'bpoulgreenh6@adobe.com', 'qrirkEUH17}5', 'EMPLOYEE');
-insert into Employees (EmployeeID, FirstName, LastName, Email, EmployeeKey, EmployeeRole) values (620, 'Yolande', 'Frenzel;', 'yfrenzelh7@weather.com', 'dbaqlOPT43', 'EMPLOYEE');
+insert into Employees (EmployeeID, FirstName, LastName, Email, EmployeeKey, EmployeeRole) values (620, 'Yolande', 'Frenzel', 'yfrenzelh7@weather.com', 'dbaqlOPT43', 'EMPLOYEE');
 insert into Employees (EmployeeID, FirstName, LastName, Email, EmployeeKey, EmployeeRole) values (621, 'Federico', 'Tilio', 'ftilioh8@mozilla.org', 'mpalbLJI61', 'VALIDATOR');
 insert into Employees (EmployeeID, FirstName, LastName, Email, EmployeeKey, EmployeeRole) values (622, 'Rina', 'Ludy', 'rludyh9@youtube.com', 'bgscaTHY54', 'EMPLOYEE');
 insert into Employees (EmployeeID, FirstName, LastName, Email, EmployeeKey, EmployeeRole) values (623, 'Darby', 'Sopper', 'dsopperha@plala.or.jp', 'fpymgDMW86ui', 'EMPLOYEE');

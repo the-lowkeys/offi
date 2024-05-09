@@ -166,3 +166,4 @@ offi.spec
 # Databases
 *.db-journal
 *.db
+/data

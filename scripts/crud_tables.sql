@@ -6,7 +6,9 @@ CREATE TABLE Transactions (
     EmployeeID INTEGER NOT NULL,
     FileID INTEGER NOT NULL,
     DrawerID INTEGER NOT NULL,
-    CabinetID INTEGER NOT NULL
+    CabinetID INTEGER NOT NULL,
+	Status VARCHAR(9),
+    Comment VARCHAR(2000)
 );
 
 CREATE TABLE Cabinets (
@@ -25,7 +27,7 @@ CREATE TABLE Drawers (
     FileCount INTEGER NOT NULL,
     CabinetID INTEGER NOT NULL,
     CabinetRow INTEGER NOT NULL,
-    CabinetColumn INTEGER NOT NULL,
+    CabinetColumn INTEGER NOT NULL
 );
 
 CREATE TABLE Files (
@@ -37,4 +39,37 @@ CREATE TABLE Files (
 
 --Heap Locations--
 
-INSERT INTO Cabinets() VALUES ()
+INSERT INTO Cabinets (
+    CabinetID,
+    CabinetLabel, 
+    DrawerMaxFileCount, 
+    CabinetRowCount, 
+    CabinetColumnCount, 
+    CabinetRoom, 
+    CabinetFloor) 
+VALUES (
+    0,
+    'HeapCab',
+    1000000,    --Surely, Heap will never reach 1 Million Files right?
+    1,
+    1,
+    'HeapRoom',
+    0
+);
+
+INSERT INTO Drawers (
+    DrawerID,
+    DrawerLabel,
+    FileCount,
+    CabinetID,
+    CabinetRow,
+    CabinetColumn
+)
+VALUES (
+    0,
+    'HeapDrawer',
+    0,
+    0,
+    0,
+    0    
+);

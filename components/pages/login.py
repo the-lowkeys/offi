@@ -9,7 +9,7 @@ from flet_core.control_event import ControlEvent
 # Login Page Values
 
 # Login Page Method Call
-def draw(page, debug=False, handlers: tuple=None):
+def draw(page, debug=False, handlers: dict=None):
     # Type Check
     if type(page) != ft.Page:
         raise TypeError('Argument \'page\' is not an \'flet.Page\' object!')
@@ -26,7 +26,8 @@ def draw(page, debug=False, handlers: tuple=None):
     button_submit: ElevatedButton = ElevatedButton(text='Login', width=200, height=75, disabled=True)
     
     def validate_username(e:ControlEvent) ->None:
-        if text_username.value.isalnum():
+        text_username.value = text_username.value.strip()
+        if text_username.value.isascii():
             if all([text_username.value, text_password.value]):
                 button_submit.disabled = False
             else:
@@ -37,12 +38,13 @@ def draw(page, debug=False, handlers: tuple=None):
         page.update()
 
     def validate_password(e: ControlEvent) -> None:
-        if len(text_password.value) >= 1:
+        text_password.value = text_password.value.strip()
+        if text_password.value.isascii():          
             if all([text_username.value, text_password.value]):
                 button_submit.disabled = False
             else:
                 button_submit.disabled = True
-                text_username.border_color = 'default'
+                text_password.border_color = 'default'
         else:
             text_password.border_color = 'red'
         page.update()
@@ -51,7 +53,7 @@ def draw(page, debug=False, handlers: tuple=None):
     def key_submit(e: ControlEvent):
         # Check if Employee Exists, if their passwords are correct, their role, 
         # Then sends the right screen to them.
-        handlers[0]('__REQUEST')
+        handlers['change-screen']('__REQUEST')
         pass
 
     text_username.on_change = validate_username

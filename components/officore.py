@@ -2,7 +2,6 @@
 # offi program. It manages the 
 
 # Package Imports
-import sys
 from functools import partial
 import flet as ft
 
@@ -30,8 +29,7 @@ class core:
         proc.__WINDOW.window_min_width = 800
         proc.__properties = {
             'debug-mode': False,
-            'version': '0.1-alpha',
-            'db-location': ''
+            'version': '0.1-alpha'
         }
         proc.__WINDOW.title = 'OFFI v' + proc.__properties['version']
         
@@ -62,9 +60,9 @@ class core:
             '__VALIDATE': validate.draw
         }
 
-        proc.__HANDLERS = (
-            proc.change_screen
-        )
+        proc.__HANDLERS = {
+            'change-screen': proc.change_screen
+        }
 
         # Program Process Setup
         # # Database Initialization
@@ -116,7 +114,7 @@ class core:
             raise TypeError('Argument \'page_str\' must be of type \'str\'!')
         
         # Set Screen
-        proc.__PAGE_LIST[page_str](proc.__WINDOW, debug=proc.__get_properties('debug-mode'))    
+        proc.__PAGE_LIST[page_str](proc.__WINDOW, debug=proc.__get_properties('debug-mode'), handlers=proc.__HANDLERS)    
         proc.__current_page = page_str
     
     def change_screen(proc, page_str: str) -> bool:
@@ -133,12 +131,5 @@ class core:
         proc.__set_screen(page_str)
         proc.__WINDOW.update()
         return True
-
-    # Database Helpers
-    def hash_key(proc, key: str):
-        # Type Check
-        pass
-    
-    def unique_id(proc, id: str):
         # Type Check
         pass
