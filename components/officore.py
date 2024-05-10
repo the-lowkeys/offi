@@ -75,7 +75,7 @@ class core:
 
         # # Process Draw
         proc.__parse_args(args[1:])
-        proc.__set_screen('__REQUEST')
+        proc.__set_screen('__LOGIN')
 
         
     # Properties and Argument Parser
