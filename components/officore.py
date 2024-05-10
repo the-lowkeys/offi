@@ -25,8 +25,9 @@ class core:
 
         # Program Properties Setup
         proc.__WINDOW = page                    # Set as Window
-        proc.__WINDOW.window_min_height = 480
-        proc.__WINDOW.window_min_width = 800
+        proc.__WINDOW.window_height = 600
+        proc.__WINDOW.window_width = 800
+        proc.__WINDOW.window_resizable = False
         proc.__properties = {
             'debug-mode': False,
             'version': '0.1-alpha'
@@ -74,7 +75,7 @@ class core:
 
         # # Process Draw
         proc.__parse_args(args[1:])
-        proc.__set_screen('__LOGIN')
+        proc.__set_screen('__REQUEST')
 
         
     # Properties and Argument Parser

@@ -126,7 +126,7 @@ class lynk:
         query = f'SELECT * FROM Drawers WHERE DrawerLabel = \'{drawer_name}\''
         result = pd.read_sql_query(query, proc.__link)
 
-        if result.emp
+        if result.empty:
             return False
         
         # Not Guaranteed to be Unique
