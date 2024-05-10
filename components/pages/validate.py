@@ -37,15 +37,28 @@ def draw(page, debug=False, handlers: dict=None):
         ft.Row(
             [
                 ft.ElevatedButton(
-                    text='Accept',
-                    width=100,
-                    height=100
-                    
+                    content=ft.Container(
+                        content=ft.Column(
+                            [
+                            ft.Text(value="Accept",
+                                    size=13,
+                                    ),
+                            ],
+                            alignment=ft.MainAxisAlignment.CENTER
+                        )
+                    )
                 ),
                 ft.ElevatedButton(
-                    text='Reject',
-                    width=100,
-                    height=100
+                        content=ft.Container(
+                        content=ft.Column(
+                            [
+                            ft.Text(value="Reject", 
+                                    size=13,
+                                    ),
+                            ],
+                            alignment=ft.MainAxisAlignment.CENTER
+                        ),
+                    )
                 ),
                 ft.TextField(
                     label='type',
@@ -59,7 +72,7 @@ def draw(page, debug=False, handlers: dict=None):
             ],
             spacing=20,
             wrap=False,
-            alignment=ft.MainAxisAlignment.CENTER,
+            alignment=ft.MainAxisAlignment.SPACE_EVENLY,
             vertical_alignment=ft.CrossAxisAlignment.CENTER
         ),
         ft.Row(
