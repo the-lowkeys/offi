@@ -60,19 +60,32 @@ def draw(page, debug=False, handlers: dict=None):
                         ),
                     )
                 ),
+                ft.ElevatedButton(
+                        content=ft.Container(
+                        content=ft.Column(
+                            [
+                            ft.Text(value="Return", 
+                                    size=13,
+                                    color='red'
+                                    ),
+                            ],
+                            alignment=ft.MainAxisAlignment.CENTER
+                        ),
+                    )
+                ),
                 ft.TextField(
-                    label='type',
+                    label='File Type',
                     width=300,
-                    height=100,
+                    height=50,
                     multiline=True,
                     min_lines=6,
                     max_lines=6
                 ),
                 
             ],
-            spacing=20,
+            spacing=17,
             wrap=False,
-            alignment=ft.MainAxisAlignment.SPACE_EVENLY,
+            alignment=ft.MainAxisAlignment.CENTER,
             vertical_alignment=ft.CrossAxisAlignment.CENTER
         ),
         ft.Row(
@@ -80,43 +93,39 @@ def draw(page, debug=False, handlers: dict=None):
                 ft.Row(
                     [
                         ft.Column([
-                             ft.TextField(
-                            label='drawer'    
+                            ft.TextField(
+                            label='File Name',
+                            disabled=True    
                         ),
-                        ft.TextField(
-                            label='cabinet'    
+                            ft.TextField(
+                            label='Cabinet Name',
+                            disabled=True,
+                            height=75    
+                        ),
+                            ft.TextField(
+                            label='Data',
+                            width=300,
+                            height=150,
+                            min_lines=4,
+                            max_lines=4,
+                            disabled=True
                         ),
                         ]),
                         
                         ft.Column(
                             [
                                 ft.TextField(
-                                    label='File Description',
+                                    label='Drawer Name',
                                     multiline=True,
-                                    min_lines=6,
-                                    max_lines=6
-                                ),
-                                ft.TextField(
-                                    label='Transaction Comment',
-                                    multiline=True,
-                                    min_lines=6,
-                                    max_lines=6,
                                     disabled=True
                                 ),
-                                ft.Row(
-                                    [
-                                        ft.TextButton(
-                                            text='Submit'
-                                        ),
-                                        ft.TextButton(
-                                            text='Cancel'
-                                        )
-                                    ],
-                                    spacing=10,
-                                    wrap=False,
-                                    alignment=ft.MainAxisAlignment.CENTER,
-                                    vertical_alignment=ft.CrossAxisAlignment.START
-                                )
+                                ft.TextField(
+                                    label='Comment',
+                                    multiline=True,
+                                    min_lines=7,
+                                    max_lines=7,
+                                    disabled=True
+                                ),
                             ],
                             spacing=10,
                             wrap=False,
