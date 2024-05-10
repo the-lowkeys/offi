@@ -1,5 +1,6 @@
 # Package Imports
 import flet as ft
+from time import sleep
 
 # Requestor Page Method Call
 def draw(page, debug=False, handlers: dict=None):
@@ -25,15 +26,18 @@ def draw(page, debug=False, handlers: dict=None):
             ft.dropdown.Option("Store"),
             ft.dropdown.Option("Query"),
         ],
-        
     )
     tf = ft.TextField(label='File Name')  # Add this line to create a TextField
+    
     tf2 = ft.TextField(label="Description", multiline=True, min_lines=10, max_lines=20)
-    # Create a Row widget and add the Dropdown and TextField to it
+    
+    lv = ft.TextField(label='idk how to put listview in this bitvh', multiline=True, min_lines=10, max_lines=20)
+    
     row = ft.Row([dd, tf])
+    row2 = ft.Row([tf2, lv])
 
     # Add the Row, Button, and Text to the page
-    page.add(row, t, tf2, b)
+    page.add(row, t, row2, b)
 
 def get_info():
     pass
