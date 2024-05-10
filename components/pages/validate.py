@@ -2,6 +2,8 @@
 import flet as ft
 from time import sleep
 
+# Project Module Imports
+
 # Requestor Page Method Call
 def draw(page, debug=False, handlers: dict=None):
     # Type Check
@@ -18,6 +20,9 @@ def draw(page, debug=False, handlers: dict=None):
     
     def radio_select(e):
         pass
+
+    def __return(e):
+        handlers['change-screen']('__LOGIN')
     
     
     # Draw Screen
@@ -40,7 +45,7 @@ def draw(page, debug=False, handlers: dict=None):
                     content=ft.Container(
                         content=ft.Column(
                             [
-                            ft.Text(value="Accept",
+                            ft.Text(value="Validate",
                                     size=13,
                                     ),
                             ],
@@ -52,7 +57,7 @@ def draw(page, debug=False, handlers: dict=None):
                         content=ft.Container(
                         content=ft.Column(
                             [
-                            ft.Text(value="Reject", 
+                            ft.Text(value="Cancel", 
                                     size=13,
                                     ),
                             ],
@@ -68,9 +73,11 @@ def draw(page, debug=False, handlers: dict=None):
                                     size=13,
                                     color='red'
                                     ),
+                                    
                             ],
-                            alignment=ft.MainAxisAlignment.CENTER
+                            alignment=ft.MainAxisAlignment.CENTER,
                         ),
+                        on_click=__return
                     )
                 ),
                 ft.TextField(
@@ -94,11 +101,11 @@ def draw(page, debug=False, handlers: dict=None):
                     [
                         ft.Column([
                             ft.TextField(
-                            label='File Name',
+                            label='File ID',
                             disabled=True    
                         ),
                             ft.TextField(
-                            label='Cabinet Name',
+                            label='Cabinet ID',
                             disabled=True,
                             height=75    
                         ),
@@ -115,7 +122,7 @@ def draw(page, debug=False, handlers: dict=None):
                         ft.Column(
                             [
                                 ft.TextField(
-                                    label='Drawer Name',
+                                    label='Drawer ID',
                                     multiline=True,
                                     disabled=True
                                 ),

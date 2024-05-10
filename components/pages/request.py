@@ -13,9 +13,6 @@ def draw(page, debug=False, handlers: dict=None):
     __db = handlers['lynk']
 
     # Functions
-    def selective_enable(e):
-        pass
-
     def unfocus_strip(e):
         page_grid[1].controls[1].value = page_grid[1].controls[1].value.strip()
         page.update()
@@ -32,7 +29,7 @@ def draw(page, debug=False, handlers: dict=None):
     def __update_datagrid():
         __clear_datagrid()
         transactions = __db.get_employee_transactions()
-        
+
         pass
 
     def __set_datagrid(row: int, col: int, value: str=''):
@@ -62,6 +59,9 @@ def draw(page, debug=False, handlers: dict=None):
         __update_datagrid()
         pass
 
+    def __return(e):
+        handlers['change-screen']('__LOGIN')
+
     # Draw Screen
     page_grid = [
         ft.Row(
@@ -85,7 +85,6 @@ def draw(page, debug=False, handlers: dict=None):
                         ft.dropdown.Option('Retrieve'),
                         ft.dropdown.Option('Query')
                     ],
-                    on_change=selective_enable,
                     width=250
                 ),
                 ft.TextField(
@@ -202,7 +201,8 @@ def draw(page, debug=False, handlers: dict=None):
                                             text='Submit'
                                         ),
                                         ft.TextButton(
-                                            text='Back'
+                                            text='Back',
+                                            on_click=__return
                                         ),
                                         ft.TextButton(
                                             text='Refresh',

@@ -75,7 +75,7 @@ class core:
 
         # # Process Draw
         proc.__parse_args(args[1:])
-        proc.__set_screen('__REQUEST')
+        proc.__set_screen('__LOGIN')
 
         
     # Properties and Argument Parser
@@ -147,6 +147,10 @@ class core:
         proc.__WINDOW.clean()
         proc.__set_screen(page_str)
         proc.__WINDOW.update()
+
+        # Logout Link
+        if (page_str == '__LOGIN'):
+            proc.set_user(-1)
         return True
         # Type Check
         pass

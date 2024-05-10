@@ -153,9 +153,14 @@ class lynk:
         # Not Unique
         return result
     
-    def get_employee_transactions(proc):
-        pass
-        
-        
+    def get_employee_transactions(proc, user_id: int):
+        if (type(user_id) != int):
+            return False
+        query = f'SELECT * FROM Transactions WHERE EmployeeID = \'{str(user_id)}\''
+        result = pd.read_sql_query(query, proc.__link)
 
-    
+        if result.empty:
+            return False
+        
+        # Not Unique
+        return result
