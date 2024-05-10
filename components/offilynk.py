@@ -64,43 +64,9 @@ class lynk:
         # Guaranteed to be Unique
         return (user_list.loc[0, 'EmployeeID'], user_list.loc[0, 'EmployeeRole'])
     
-    """
-    The update_transaction function takes in a set of attributes.
-        type: True (add/update) or False (remove)
-    Attributes:
-        file-name: str (len <= 50)
-        request-type: str ('QUERY', 'STORE', 'RETRIEVE')
-        file-desc: str (len <= 2000)
-        request-status: str ('REQUESTED', 'ACCEPTED', 'REJECTED', 'VALIDATED', 'CANCELLED')
-    Modifies files stored in Heap.
-    """
-    def update_transaction(proc, type: bool, file_attributes: dict):
-        # Check if File Exists first
-
-        pass
-
-    """
-    The process_transaction function takes in a set of attributes.
-        type: True (accept) or False (reject)
-    Attributes:
-        
-
-
-    """
-    def process_transaction(proc, type: bool, file_attributes: dict):
-        if type:
-            pass
-        
-        pass
-
-    """
-    The validate_transaction function takes in a set of attributes:
-    """
-    def validate_transaction(proc, type: bool, file_attributes: dict):
-        pass
-    
     # Interface Helpers
-    def __check_file(proc, file_name: str):
+    # # File Functions
+    def check_file(proc, file_name: str):
         if (type(file_name) != str) or (len(file_name) > 50): return False
         query = f'SELECT * FROM Files WHERE FileLabel = \'{file_name}\''
         result = pd.read_sql_query(query, proc.__link)
@@ -111,9 +77,9 @@ class lynk:
         # Guaranteed to be Unique
         return (result.loc[0, 'FileID'], result.loc[0, 'DrawerID'])
     
-    def __get_file_attr(proc, file_id: str):
-        if (type(file_id) != str) or (len(file_id) > 50): return False
-        query = f'SELECT * FROM Files WHERE FileID = \'{file_id}\''
+    def get_file_attr(proc, file_id: int):
+        if (type(file_id) != int): return False
+        query = f'SELECT * FROM Files WHERE FileID = \'{str(file_id)}\''
         result = pd.read_sql_query(query, proc.__link)
         if result.empty:
             return False
@@ -121,7 +87,8 @@ class lynk:
         # Guarranteed to be Unique
         return result
 
-    def __check_drawer(proc, drawer_name: str):
+    # # Drawer Functions
+    def check_drawer(proc, drawer_name: str):
         if (type(drawer_name) != str) or (len(drawer_name) > 50): return False
         query = f'SELECT * FROM Drawers WHERE DrawerLabel = \'{drawer_name}\''
         result = pd.read_sql_query(query, proc.__link)
@@ -132,9 +99,9 @@ class lynk:
         # Not Guaranteed to be Unique
         return pd.concat(result['DrawerID'], result['CabinetID'])
     
-    def __get_drawer_attr(proc, drawer_id: str):
-        if (type(drawer_id) != str) or (len(drawer_id) > 50): return False
-        query = f'SELECT * FROM Drawers WHERE DrawerID = \'{drawer_id}\''
+    def get_drawer_attr(proc, drawer_id: int):
+        if (type(drawer_id) != int): return False
+        query = f'SELECT * FROM Drawers WHERE DrawerID = \'{str(drawer_id)}\''
         result = pd.read_sql_query(query, proc.__link)
 
         if result.empty:
@@ -143,9 +110,9 @@ class lynk:
         # Not Guaranteed to be Unique
         return result
     
-    def __get_drawer_files(proc, drawer_id: str):
-        if (type(drawer_id) != str) or (len(drawer_id) > 50): return False
-        query = f'SELECT * FROM Files WHERE DrawerID = \'{drawer_id}\''
+    def get_drawer_files(proc, drawer_id: int):
+        if (type(drawer_id) != int): return False
+        query = f'SELECT FileID FROM Files WHERE DrawerID = \'{str(drawer_id)}\''
         result = pd.read_sql_query(query, proc.__link)
 
         if result.empty:
@@ -153,5 +120,42 @@ class lynk:
         
         # Not Guaranteed to be Unique
         return result['FileID']
+    
+    # # Cabinet Functions
+    def check_cabinet(proc, cabinet_name:str):
+        pass
+
+    def get_cabinet_attr(proc, cabinet_id: int):
+        pass
+
+    # # Transaction Functions
+    def get_status_files(proc, transaction_status: str):
+        if (type(transaction_status) != str) or (len(transaction_status) > 9):
+            return False
+        query = f'SELECT * FROM Transactions WHERE Status = \'{transaction_status}\''
+        result = pd.read_sql_query(query, proc.__link)
+
+        if result.empty:
+            return False
+        
+        # Not Unique
+        return result
+    
+    def get_transaction_attr(proc, transaction_id: int):
+        if (type(transaction_id) != int):
+            return False
+        query = f'SELECT * FROM Transactions WHERE TransactionID = \'{str(transaction_id)}\''
+        result = pd.read_sql_query(query, proc.__link)
+
+        if result.empty:
+            return False
+        
+        # Not Unique
+        return result
+    
+    def get_employee_transactions(proc):
+        pass
+        
+        
 
     

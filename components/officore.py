@@ -70,12 +70,12 @@ class core:
             'set-user': proc.set_user,
             'get-user': proc.get_user,
             'check-creds': proc.dblynk.check_credentials,
-            'update-transaction': proc.dblynk.update_transaction     
+            'lynk': proc.dblynk     
         }
 
         # # Process Draw
         proc.__parse_args(args[1:])
-        proc.__set_screen('__LOGIN')
+        proc.__set_screen('__REQUEST')
 
         
     # Properties and Argument Parser
@@ -97,6 +97,10 @@ class core:
             # TODO: Multi-valued Options
 
     def set_user(proc, user_id: int):
+        if user_id == -1:
+            proc.__current_user = ''
+            return 
+        
         if (user_id < 0) or (type(user_id) != int):
             raise ValueError('Wrong input \'user_id\'!')
         proc.__current_user = user_id

@@ -14,7 +14,6 @@ CREATE TABLE Transactions (
 CREATE TABLE Cabinets (
     CabinetID INTEGER PRIMARY KEY AUTOINCREMENT,
     CabinetLabel VARCHAR(50) NOT NULL,
-    DrawerMaxFileCount INTEGER NOT NULL,
     CabinetRowCount INTEGER NOT NULL,
     CabinetColumnCount INTEGER NOT NULL
 );
