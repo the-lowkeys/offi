@@ -2,7 +2,7 @@ create table Employees (
 	EmployeeID INTEGER PRIMARY KEY AUTOINCREMENT,
 	FirstName VARCHAR(50) NOT NULL,
 	LastName VARCHAR(50) NOT NULL,
-	Email VARCHAR(50) NOT NULL,
+	Email VARCHAR(50) UNIQUE NOT NULL,
 	EmployeeKey VARCHAR(50) NOT NULL,
 	EmployeeRole VARCHAR(9) NOT NULL
 );

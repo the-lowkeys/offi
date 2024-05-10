@@ -60,13 +60,17 @@ class core:
             '__VALIDATE': validate.draw
         }
 
-        proc.__HANDLERS = {
-            'change-screen': proc.change_screen
-        }
-
         # Program Process Setup
         # # Database Initialization
         proc.dblynk = ofl.lynk()
+
+        proc.__HANDLERS = {
+            'change-screen': proc.change_screen,
+            'set-user': proc.set_user,
+            'get-user': proc.get_user,
+            'check-creds': proc.dblynk.check_credentials,
+            'push-request': proc.dblynk.add_request            
+        }
 
         # # Process Draw
         proc.__parse_args(args[1:])
@@ -90,6 +94,14 @@ class core:
                 proc.__PROGRAM_ARGS[args[loc_arg]][0](not proc.__get_properties(proc.__PROGRAM_ARGS[args[loc_arg]][1]))
 
             # TODO: Multi-valued Options
+
+    def set_user(proc, user_id: int):
+        if (user_id < 0) or (type(user_id) != int):
+            raise ValueError('Wrong input \'user_id\'!')
+        proc.__current_user = user_id
+    
+    def get_user(proc):
+        return proc.__current_user
     
     def __set_properties(proc, key: str, val):
         # Type Check
