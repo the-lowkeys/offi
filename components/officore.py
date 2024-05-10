@@ -69,7 +69,7 @@ class core:
             'set-user': proc.set_user,
             'get-user': proc.get_user,
             'check-creds': proc.dblynk.check_credentials,
-            'push-request': proc.dblynk.add_request            
+            'update-transaction': proc.dblynk.update_transaction     
         }
 
         # # Process Draw

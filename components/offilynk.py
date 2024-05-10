@@ -55,50 +55,103 @@ class lynk:
     """
     def check_credentials(proc, user_attributes: dict):
         if (len(user_attributes['user-email']) > 50) or (len(user_attributes['user-key']) > 50):
-            print(user_attributes)
             return False
         query = f'''SELECT * FROM Employees WHERE Email = \'{user_attributes['user-email']}\' AND 
                     EmployeeKey = \'{user_attributes['user-key']}\''''
         user_list = pd.read_sql_query(query, proc.__link)
-        print(user_list)
         if user_list.empty:
             return False
+        # Guaranteed to be Unique
         return (user_list.loc[0, 'EmployeeID'], user_list.loc[0, 'EmployeeRole'])
     
     """
-    The add_request function takes in a set of attributes.
+    The update_transaction function takes in a set of attributes.
+        type: True (add/update) or False (remove)
+    Attributes:
         file-name: str (len <= 50)
         request-type: str ('QUERY', 'STORE', 'RETRIEVE')
         file-desc: str (len <= 2000)
+        request-status: str ('REQUESTED', 'ACCEPTED', 'REJECTED', 'VALIDATED', 'CANCELLED')
+    Modifies files stored in Heap.
     """
-    def add_request(proc, file_attributes: dict):
+    def update_transaction(proc, type: bool, file_attributes: dict):
+        # Check if File Exists first
+
         pass
 
     """
-    The process_request function takes in a set of attributes,
-    depending on the process type.
+    The process_transaction function takes in a set of attributes.
+        type: True (accept) or False (reject)
+    Attributes:
+        
 
 
     """
-    def process_request(proc, type: bool, file_attributes: dict):
+    def process_transaction(proc, type: bool, file_attributes: dict):
         if type:
             pass
         
         pass
 
     """
-    The validate_request function takes in a set of attributes:
+    The validate_transaction function takes in a set of attributes:
     """
-    def validate_request(proc, type: bool, file_attributes: dict):
+    def validate_transaction(proc, type: bool, file_attributes: dict):
         pass
     
     # Interface Helpers
+    def __check_file(proc, file_name: str):
+        if (type(file_name) != str) or (len(file_name) > 50): return False
+        query = f'SELECT * FROM Files WHERE FileLabel = \'{file_name}\''
+        result = pd.read_sql_query(query, proc.__link)
+        
+        if result.empty:
+            return False
+        
+        # Guaranteed to be Unique
+        return (result.loc[0, 'FileID'], result.loc[0, 'DrawerID'])
+    
+    def __get_file_attr(proc, file_id: str):
+        if (type(file_id) != str) or (len(file_id) > 50): return False
+        query = f'SELECT * FROM Files WHERE FileID = \'{file_id}\''
+        result = pd.read_sql_query(query, proc.__link)
+        if result.empty:
+            return False
+        
+        # Guarranteed to be Unique
+        return result
 
-    def __push_file(proc, ):
-        pass
+    def __check_drawer(proc, drawer_name: str):
+        if (type(drawer_name) != str) or (len(drawer_name) > 50): return False
+        query = f'SELECT * FROM Drawers WHERE DrawerLabel = \'{drawer_name}\''
+        result = pd.read_sql_query(query, proc.__link)
 
-    def __get_employee_requests(proc, ):
-        pass
+        if result.emp
+            return False
+        
+        # Not Guaranteed to be Unique
+        return pd.concat(result['DrawerID'], result['CabinetID'])
+    
+    def __get_drawer_attr(proc, drawer_id: str):
+        if (type(drawer_id) != str) or (len(drawer_id) > 50): return False
+        query = f'SELECT * FROM Drawers WHERE DrawerID = \'{drawer_id}\''
+        result = pd.read_sql_query(query, proc.__link)
 
+        if result.empty:
+            return False
+        
+        # Not Guaranteed to be Unique
+        return result
+    
+    def __get_drawer_files(proc, drawer_id: str):
+        if (type(drawer_id) != str) or (len(drawer_id) > 50): return False
+        query = f'SELECT * FROM Files WHERE DrawerID = \'{drawer_id}\''
+        result = pd.read_sql_query(query, proc.__link)
+
+        if result.empty:
+            return False
+        
+        # Not Guaranteed to be Unique
+        return result['FileID']
 
     

@@ -25,7 +25,7 @@ def draw(page, debug=False, handlers: dict=None):
     text_password: TextField = TextField(label='Password', text_align=ft.TextAlign.LEFT, width=500, password=True, can_reveal_password=True)
     button_submit: ElevatedButton = ElevatedButton(text='Login', width=200, height=75, disabled=True)
     
-    def validate_username(e:ControlEvent) -> None:
+    def validate_username(e: ControlEvent) -> None:
         text_username.value = text_username.value.strip()
         if text_username.value.isascii():
             button_submit.disabled = True
@@ -63,7 +63,6 @@ def draw(page, debug=False, handlers: dict=None):
             return
         
         # Function Call Cascade
-        print(check)
         handlers['set-user'](int(check[0]))
         if check[1] == 'EMPLOYEE': handlers['change-screen']('__REQUEST')
         elif check[1] == 'VALIDATOR': handlers['change-screen']('__VALIDATE')

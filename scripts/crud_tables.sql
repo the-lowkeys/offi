@@ -13,17 +13,15 @@ CREATE TABLE Transactions (
 
 CREATE TABLE Cabinets (
     CabinetID INTEGER PRIMARY KEY AUTOINCREMENT,
-    CabinetLabel VARCHAR(50) UNIQUE NOT NULL,
+    CabinetLabel VARCHAR(50) NOT NULL,
     DrawerMaxFileCount INTEGER NOT NULL,
     CabinetRowCount INTEGER NOT NULL,
-    CabinetColumnCount INTEGER NOT NULL,
-    CabinetRoom VARCHAR(50) NOT NULL,
-    CabinetFloor INTEGER NOT NULL
+    CabinetColumnCount INTEGER NOT NULL
 );
 
 CREATE TABLE Drawers (
     DrawerID INTEGER PRIMARY KEY AUTOINCREMENT,
-    DrawerLabel VARCHAR(50) UNIQUE NOT NULL,
+    DrawerLabel VARCHAR(50) NOT NULL,
     FileCount INTEGER NOT NULL,
     CabinetID INTEGER NOT NULL,
     CabinetRow INTEGER NOT NULL,
@@ -44,17 +42,14 @@ INSERT INTO Cabinets (
     CabinetLabel, 
     DrawerMaxFileCount, 
     CabinetRowCount, 
-    CabinetColumnCount, 
-    CabinetRoom, 
-    CabinetFloor) 
+    CabinetColumnCount
+    ) 
 VALUES (
     0,
     'HeapCab',
     1000000000,    --Surely, Heap will never reach 1 Trillion Files right?
     1,
-    1,
-    'HeapRoom',
-    0
+    1
 );
 
 INSERT INTO Drawers (
