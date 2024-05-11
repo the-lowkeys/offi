@@ -12,14 +12,16 @@ To install Offi, either download the .zip file from GitHub directly, or use the 
 
 ```git clone https://github.com/the-lowkeys/offi.git```
 
-Additionally, Offi requires the `pandas` python module, which you can install via `pip`.
+Additionally, Offi requires the `pandas` and `flet` python modules, which you can install via `pip`.
 
-```pip install pandas```
+```python
+pip install pandas
+pip install flet
+```
 
 ## Running
 
 To run Offi, navigate to the root folder of the project and invoke through a terminal the command:
 
-```python Source/main.py```
+```flet run offi.py```
 
-## Building from Source

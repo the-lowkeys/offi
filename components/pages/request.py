@@ -28,7 +28,7 @@ def draw(page, debug=False, handlers: dict=None):
     
     def __update_datagrid():
         __clear_datagrid()
-        transactions = __db.get_employee_transactions()
+        transactions = __db.get_employee_transactions(handlers['get-user'])
 
         pass
 
